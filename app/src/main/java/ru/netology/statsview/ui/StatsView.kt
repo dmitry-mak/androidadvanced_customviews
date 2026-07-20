@@ -47,7 +47,7 @@ class StatsView @JvmOverloads constructor(
     var data: List<Float> = emptyList()
         set(value) {
             val currentData = value.map { number ->
-                maxOf(number,0F)
+                maxOf(number, 0F)
             }
             val total = currentData.sum()
 
@@ -97,11 +97,23 @@ class StatsView @JvmOverloads constructor(
             return
         }
         var startAngle = -90F
+
+        val segmentStarts = mutableListOf<Pair<Float, Int>>()
+
         data.forEachIndexed { index, datum ->
             val angle = datum * 360F
+            segmentStarts += startAngle to colors.getOrElse(index) { generateRandomColor() }
             paint.color = colors.getOrElse(index) { generateRandomColor() }
+            paint.strokeCap = Paint.Cap.BUTT
             canvas.drawArc(oval, startAngle, angle, false, paint)
             startAngle += angle
+        }
+
+        paint.strokeCap = Paint.Cap.ROUND
+        val capSweep = 0.03F
+        segmentStarts.forEach { (angle, color) ->
+            paint.color = color
+            canvas.drawArc(oval, angle, capSweep, false, paint)
         }
 
         canvas.drawText(
