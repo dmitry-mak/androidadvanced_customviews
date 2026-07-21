@@ -6,14 +6,15 @@ import ru.netology.statsview.ui.StatsView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-       super.onCreate(savedInstanceState)
+        super.onCreate(savedInstanceState)
 //        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        findViewById<StatsView>(R.id.statsView).data = listOf(
-            500F,
-            500F,
-            500F,
-            500F
+        val view = findViewById<StatsView>(R.id.statsView)
+        view.data = listOf(
+            250F,
+            800F,
+            750F,
+            200F
         )
     }
 }
