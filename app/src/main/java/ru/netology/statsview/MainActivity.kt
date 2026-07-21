@@ -20,31 +20,31 @@ class MainActivity : ComponentActivity() {
             500F
         )
 
-        val textView = findViewById<TextView>(R.id.label)
-
-        val animation =
-            AnimationUtils.loadAnimation(this, R.anim.animation).apply {
-                setAnimationListener(object : Animation.AnimationListener {
-                    override fun onAnimationEnd(p0: Animation?) {
-                        textView.text = "onAnimationEnd"
-                    }
-
-                    override fun onAnimationRepeat(p0: Animation?) {
-                        textView.text = "onAnimationRepeat"
-                    }
-
-                    override fun onAnimationStart(p0: Animation?) {
-                        textView.text = "onAnimationStart"
-                    }
-                })
-            }
+//        val textView = findViewById<TextView>(R.id.label)
+//
+//        val animation =
+//            AnimationUtils.loadAnimation(this, R.anim.animation).apply {
+//                setAnimationListener(object : Animation.AnimationListener {
+//                    override fun onAnimationEnd(p0: Animation?) {
+//                        textView.text = "onAnimationEnd"
+//                    }
+//
+//                    override fun onAnimationRepeat(p0: Animation?) {
+//                        textView.text = "onAnimationRepeat"
+//                    }
+//
+//                    override fun onAnimationStart(p0: Animation?) {
+//                        textView.text = "onAnimationStart"
+//                    }
+//                })
+//            }
 
 
 //        findViewById<StatsView>(R.id.statsView).startAnimation(
 //            AnimationUtils.loadAnimation(this, R.anim.animation)
 //        )
 
-        findViewById<StatsView>(R.id.statsView).startAnimation(animation)
+//        findViewById<StatsView>(R.id.statsView).startAnimation(animation)
     }
 }
 
