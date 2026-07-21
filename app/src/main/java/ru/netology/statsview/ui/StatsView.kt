@@ -101,9 +101,12 @@ class StatsView @JvmOverloads constructor(
         if (data.isEmpty()) {
             return
         }
-        var startAngle = -90F
 
+        var startAngle = -90F
         val segmentStarts = mutableListOf<Pair<Float, Int>>()
+
+        canvas.save()
+        canvas.rotate(360F * progress, center.x, center.y)
 
         data.forEachIndexed { index, datum ->
             val angle = datum * 360F
@@ -122,6 +125,8 @@ class StatsView @JvmOverloads constructor(
             paint.color = color
             canvas.drawArc(oval, angle, capSweep * progress, false, paint)
         }
+
+        canvas.restore()
 
         canvas.drawText(
             "%.2f%%".format(data.sum() * 100),
